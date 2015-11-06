@@ -9,11 +9,11 @@
     '$scope',
     '$location',
     'IceCreamFactory',
-    'iceCreamFactory',
+    'IceCreamsFactory',
     '$routeParams'
   ];
 
-  function icecreamController($scope, $location, IceCreamFactory, iceCreamFactory, $routeParams) {
+  function icecreamController ($scope, $location, IceCreamFactory, IceCreamsFactory, $routeParams) {
     var iceCreamId =  $routeParams.id;
     IceCreamFactory.findById(iceCreamId);
     $scope.icecream = IceCreamFactory.icecream;
@@ -26,4 +26,4 @@
       $location.path('/');
     };
   };
-})
+})();
