@@ -1,31 +1,29 @@
-angular
-  .module('myapp')
-  .controller('icecreamController', icecreamController);
+(function() {
+  'use strict';
 
-icecreamController.$inject = ['$scope', '$location', 'IceCreamFactory', 'SingleIceCreamFactory'];
+  angular
+    .module('myapp')
+    .controller('icecreamController', icecreamController);
 
-function icecreamController ($scope, $location, IceCreamFactory, SingleIceCreamFactory) {
-  IceCreamFactory.getCreams();
-  $scope.allIceCream = IceCreamFactory.icecreams;
-  $scope.icecream = {};
+  icecreamController.$inject = [
+    '$scope',
+    '$location',
+    'SingleIceCreamFactory',
+    'iceCreamFactory',
+    '$routeParams'
+  ];
 
-  $scope.add = function(icecream){
-    IceCreamFactory.add(icecream);
-    $scope.icecream = {};
-    IceCreamFactory.getCreams();
-    $scope.allIceCream = IceCreamFactory.icecreams;
+  function icecreamController($scope, $location, SingleIceCreamFactory, iceCreamFactory, $routeParams) {
+    var iceCreamId =  $routeParams.id;
+    SingleIceCreamFactory.findById(iceCreamId);
+    $scope.icecream = SingleIceCreamFactory.icecream;
+
+    $scope.edit = function(icecream){
+      SingleIceCreamFactory.editIceCream(icecream[0]);
+    };
+
+    $scope.goback = function(){
+      $location.path('/');
+    };
   };
-
-  $scope.show = function(icecream){
-    var path = '/' + icecream._id;
-    $location.path(path);
-  };
-
-  $scope.delete = function(icecream){
-    IceCreamFactory.delete(icecream._id);
-    IceCreamFactory.getCreams();
-    $scope.allIceCream = IceCreamFactory.icecreams;
-  };
-
-};
-
+})
