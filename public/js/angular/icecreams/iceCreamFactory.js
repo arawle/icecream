@@ -1,6 +1,10 @@
-var app = angular.module('myapp');
+(function(){
+  'use strict';
 
-app.factory('IceCreamFactory', ['$http', function($http){
+  angular
+    .module('myapp')
+    .factory('IceCreamFactory', IceCreamFactory);
+
   var IceCreamFactory = {};
 
   IceCreamFactory.icecreams = [];
@@ -39,28 +43,7 @@ app.factory('IceCreamFactory', ['$http', function($http){
   };
 
   return IceCreamFactory;
-}]);
-
-app.factory('SingleIceCreamFactory', ['$http', function($http){
-  var SingleIceCreamFactory = {};
-
-  SingleIceCreamFactory.icecream = [];
-
-  SingleIceCreamFactory.findById = function(id){
-    var icecream = 'api/icecreams/' + id;
-    SingleIceCreamFactory.icecream = [];
-
-    $http.get(icecream)
-      .success(function(data) {
-        SingleIceCreamFactory.icecream.push(data);
-      })
-      .error(function(data) {
-        console.log('Error: ' + data)
-      });
-  };
-
-  return SingleIceCreamFactory;
-}]);
+})();
 
 
 

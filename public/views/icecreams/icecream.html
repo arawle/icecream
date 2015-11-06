@@ -1,4 +1,14 @@
-
 <h2>{{icecream[0].name}}</h2><br/>
 <img src="{{icecream[0].imageUrl}}" alt="ice cream photo"/><br/>
 {{icecream[0].description}}<br/>
+
+<button ng-click="editIceCream = ! editIceCream">Edit</button>
+
+<form ng-show="editIceCream">
+  Name: <input type="text" ng-model="icecream[0].name" value="sdf"/><br/>
+  Description: <input type="text" ng-model="icecream[0].description" /><br/>
+  ImageUrl: <input type="text" ng-model="icecream[0].imageUrl"/><br/>
+  <input type="submit" ng-click="edit(icecream); editIceCream = ! editIceCream"/>
+</form>
+
+<button ng-click="goback()">Go Back</button>

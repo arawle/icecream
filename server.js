@@ -50,10 +50,14 @@ apiRouter.route('/icecreams/:icecreamId')
 })
 
 .put(function(req,res){
-  db.Icecream.findById(req.params.icecreamId,function(error,icecream){
+  console.log(req)
+  console.log(res)
+  db.Icecream.findById(req.params.icecreamId, function(error,icecream){
+    console.log(icecream)
     if (error) return res.json({message: "Sorry, there was an error finding that ice-cream!", error: error});
-    icecream.name = req.body.name
-    icecream.description = req.body.description
+    icecream.name = req.body.name;
+    icecream.description = req.body.description;
+    icecream.imageUrl = req.body.imageUrl;
     icecream.save(function(err){
       if (err) res.send(err);
       res.json({message:'Ice-cream updated!'})
