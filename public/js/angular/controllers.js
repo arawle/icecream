@@ -1,6 +1,6 @@
 var app = angular.module('myapp');
 
-app.controller('icecreamController', ['$scope', 'TeaDataFactory', 'ShoppingCart', function($scope, TeaDataFactory, ShoppingCart){
+app.controller('icecreamController', ['$scope', function($scope){
   $scope.formData = {}
 
   $http.get('/api/icecreams')
