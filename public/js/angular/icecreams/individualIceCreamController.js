@@ -2,7 +2,7 @@ angular
   .module('myapp')
   .controller('individualIceCreamController', individualIceCreamController);
 
-icecreamController.$inject = ['$scope', '$location', 'SingleIceCreamFactory', 'iceCreamFactory', '$routeParams'];
+individualIceCreamController.$inject = ['$scope', '$location', 'SingleIceCreamFactory', 'iceCreamFactory', '$routeParams'];
 
 function individualIceCreamController ($scope, $location, SingleIceCreamFactory, iceCreamFactory, $routeParams) {
   var iceCreamId =  $routeParams.id;
