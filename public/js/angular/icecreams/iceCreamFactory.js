@@ -1,4 +1,4 @@
-(function(){
+(function() {
   'use strict';
 
   angular
@@ -7,38 +7,29 @@
 
   IceCreamFactory.$inject = ['$http'];
 
-  function IceCreamFactory ($http) {
+  function IceCreamFactory ($http){
     var IceCreamFactory = {};
 
-    IceCreamFactory.icecreams = [];
+    IceCreamFactory.icecream = [];
 
-    IceCreamFactory.getCreams = function(){
-      IceCreamFactory.icecreams = [];
-      $http.get('/api/icecreams')
+    IceCreamFactory.findById = function(id){
+      var icecream = 'api/icecreams/' + id;
+      IceCreamFactory.icecream = [];
+
+      $http.get(icecream)
         .success(function(data) {
-          for (var i = 0; i < data.length; i++){
-            IceCreamFactory.icecreams.push(data[i]);
-          };
+          IceCreamFactory.icecream.push(data);
         })
         .error(function(data) {
           console.log('Error: ' + data)
         });
     };
 
-    IceCreamFactory.add = function(icecream){
-      $http.post('/api/icecreams', icecream)
-        .success(function(data) {
-          console.log(data)
-        })
-        .error(function(data) {
-          console.log('Error: ' + data);
-        });
-    };
-
-    IceCreamFactory.delete = function(id){
-      $http.delete('/api/icecreams/' + id)
-        .success(function(data) {
-          console.log('success');
+    IceCreamFactory.editIceCream = function(icecream){
+      console.log(icecream)
+      $http.put('api/icecreams/' + icecream._id, icecream)
+        .success(function(data){
+          console.log('success')
         })
         .error(function(data) {
           console.log('Error: ' + data)
@@ -48,13 +39,3 @@
     return IceCreamFactory;
   }
 })();
-
-
-
-
-
-
-
-
-
-

@@ -8,20 +8,20 @@
   icecreamsController.$inject = [
     '$scope',
     '$location',
-    'IceCreamFactory',
-    'SingleIceCreamFactory'
+    'IceCreamsFactory',
+    'IceCreamFactory'
   ];
 
-  function icecreamsController($scope, $location, IceCreamFactory, SingleIceCreamFactory) {
-    IceCreamFactory.getCreams();
-    $scope.allIceCream = IceCreamFactory.icecreams;
+  function icecreamsController($scope, $location, IceCreamsFactory, IceCreamFactory) {
+    IceCreamsFactory.getCreams();
+    $scope.allIceCream = IceCreamsFactory.icecreams;
     $scope.icecream = {};
 
     $scope.add = function(icecream){
-      IceCreamFactory.add(icecream);
+      IceCreamsFactory.add(icecream);
       $scope.icecream = {};
-      IceCreamFactory.getCreams();
-      $scope.allIceCream = IceCreamFactory.icecreams;
+      IceCreamsFactory.getCreams();
+      $scope.allIceCream = IceCreamsFactory.icecreams;
     };
 
     $scope.show = function(icecream){
@@ -30,9 +30,9 @@
     };
 
     $scope.delete = function(icecream){
-      IceCreamFactory.delete(icecream._id);
-      IceCreamFactory.getCreams();
-      $scope.allIceCream = IceCreamFactory.icecreams;
+      IceCreamsFactory.delete(icecream._id);
+      IceCreamsFactory.getCreams();
+      $scope.allIceCream = IceCreamsFactory.icecreams;
     };
   }
 })();

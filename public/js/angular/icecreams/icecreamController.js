@@ -8,18 +8,18 @@
   icecreamController.$inject = [
     '$scope',
     '$location',
-    'SingleIceCreamFactory',
+    'IceCreamFactory',
     'iceCreamFactory',
     '$routeParams'
   ];
 
-  function icecreamController($scope, $location, SingleIceCreamFactory, iceCreamFactory, $routeParams) {
+  function icecreamController($scope, $location, IceCreamFactory, iceCreamFactory, $routeParams) {
     var iceCreamId =  $routeParams.id;
-    SingleIceCreamFactory.findById(iceCreamId);
-    $scope.icecream = SingleIceCreamFactory.icecream;
+    IceCreamFactory.findById(iceCreamId);
+    $scope.icecream = IceCreamFactory.icecream;
 
     $scope.edit = function(icecream){
-      SingleIceCreamFactory.editIceCream(icecream[0]);
+      IceCreamFactory.editIceCream(icecream[0]);
     };
 
     $scope.goback = function(){

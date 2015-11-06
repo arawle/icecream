@@ -8,11 +8,11 @@
   function configFunc($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: '../views/icecreams/index.html',
+        templateUrl: '/views/icecreams/index.html',
         controller: 'icecreamsController'
       })
       .when('/:id', {
-        templateUrl: '../views/icecreams/icecream.html',
+        templateUrl: '/views/icecreams/icecream.html',
         controller: 'icecreamController'
       });
 
