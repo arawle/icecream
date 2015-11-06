@@ -5,34 +5,38 @@
     .module('myapp')
     .factory('SingleIceCreamFactory', SingleIceCreamFactory);
 
-  var SingleIceCreamFactory = {};
+  SingleIceCreamFactory.$inject = ['$http'];
 
-  SingleIceCreamFactory.icecream = [];
+  function SingleIceCreamFactory ($http){
+    var SingleIceCreamFactory = {};
 
-  SingleIceCreamFactory.findById = function(id){
-    var icecream = 'api/icecreams/' + id;
     SingleIceCreamFactory.icecream = [];
 
-    $http.get(icecream)
-      .success(function(data) {
-        SingleIceCreamFactory.icecream.push(data);
-      })
-      .error(function(data) {
-        console.log('Error: ' + data)
-      });
-  };
+    SingleIceCreamFactory.findById = function(id){
+      var icecream = 'api/icecreams/' + id;
+      SingleIceCreamFactory.icecream = [];
 
-  SingleIceCreamFactory.editIceCream = function(icecream){
-    console.log(icecream)
-    $http.put('api/icecreams/' + icecream._id, icecream)
-      .success(function(data){
-        console.log('success')
-      })
-      .error(function(data) {
-        console.log('Error: ' + data)
-      });
-  };
+      $http.get(icecream)
+        .success(function(data) {
+          SingleIceCreamFactory.icecream.push(data);
+        })
+        .error(function(data) {
+          console.log('Error: ' + data)
+        });
+    };
 
-  return SingleIceCreamFactory;
+    SingleIceCreamFactory.editIceCream = function(icecream){
+      console.log(icecream)
+      $http.put('api/icecreams/' + icecream._id, icecream)
+        .success(function(data){
+          console.log('success')
+        })
+        .error(function(data) {
+          console.log('Error: ' + data)
+        });
+    };
+
+    return SingleIceCreamFactory;
+  }
 })();
 
