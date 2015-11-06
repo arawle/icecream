@@ -9,11 +9,11 @@
     $routeProvider
       .when('/', {
         templateUrl: '../views/icecreams/index.html',
-        controller: 'icecreamController'
+        controller: 'icecreamsController'
       })
       .when('/:id', {
         templateUrl: '../views/icecreams/icecream.html',
-        controller: 'individualIceCreamController'
+        controller: 'icecreamController'
       });
 
     $locationProvider.html5Mode(true);
