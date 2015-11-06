@@ -1,4 +1,3 @@
-
 var express = require("express"),
 db = require("./models"),
 app = express(),
@@ -22,9 +21,8 @@ app.use(function(req, res, next) {
   next();
 });
 
-apiRouter.route('/api/icecreams')
+apiRouter.route('/icecreams')
 .post(function(req,res){
-  console.log(req.body)
   db.Icecream.create(req.body,function(error){
     if (error) return res.json({error:error.message})
     res.json({ message: 'Ice-cream created!' });
@@ -36,14 +34,14 @@ apiRouter.route('/api/icecreams')
   })
 })
 
-apiRouter.route('/api/icecreams/:icecreamId')
+apiRouter.route('/icecreams/:icecreamId')
 .get(function(req,res){
   db.Icecream.findById(req.params.icecreamId,function(error,icecream){
     if (error) return res.json({message: "Sorry, there was an error finding that ice-cream!", error: error});
     res.json(icecream);
   })
 })
-apiRouter.route('/api/icecreams/:icecreamId')
+apiRouter.route('/icecreams/:icecreamId')
 .get(function(req,res){
   db.Icecream.findById(req.params.icecreamId,function(error,icecream){
     if (error) return res.json({message: "Sorry, there was an error finding that ice-cream!", error: error});
