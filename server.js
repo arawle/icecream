@@ -50,10 +50,7 @@ apiRouter.route('/icecreams/:icecreamId')
 })
 
 .put(function(req,res){
-  console.log(req)
-  console.log(res)
   db.Icecream.findById(req.params.icecreamId, function(error,icecream){
-    console.log(icecream)
     if (error) return res.json({message: "Sorry, there was an error finding that ice-cream!", error: error});
     icecream.name = req.body.name;
     icecream.description = req.body.description;
@@ -73,7 +70,6 @@ apiRouter.route('/icecreams/:icecreamId')
 })
 
 app.use('/api', apiRouter);
-
 
 app.get('/', function(req,res){
   res.render('index.ejs');

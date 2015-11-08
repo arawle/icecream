@@ -9,7 +9,6 @@
 
   function IceCreamsFactory ($http) {
     var IceCreamsFactory = {};
-
     IceCreamsFactory.icecreams = [];
 
     IceCreamsFactory.getCreams = function(){
