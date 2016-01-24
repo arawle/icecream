@@ -64,8 +64,8 @@ apiRouter.route('/icecreams/:icecreamId')
 
 .delete(function(req,res){
   db.Icecream.remove({_id:req.params.icecreamId}, function(error,icecream){
-      if (error) return res.send(error);
-      res.json({ message: 'Ice-cream successfully deleted' });
+    if (error) return res.send(error);
+    res.json({ message: 'Ice-cream successfully deleted' });
   })
 })
 

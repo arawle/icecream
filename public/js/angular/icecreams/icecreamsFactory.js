@@ -23,7 +23,6 @@
           console.log('Error: ' + data)
         });
     };
-
     IceCreamsFactory.add = function(icecream){
       $http.post('/api/icecreams', icecream)
         .success(function(data) {
@@ -33,7 +32,6 @@
           console.log('Error: ' + data);
         });
     };
-
     IceCreamsFactory.delete = function(id){
       $http.delete('/api/icecreams/' + id)
         .success(function(data) {
@@ -43,7 +41,6 @@
           console.log('Error: ' + data)
         });
     };
-
     return IceCreamsFactory;
   }
 })();
